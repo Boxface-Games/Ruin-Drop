@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - wall_L
-  - wall_R
   - enemy
+  - wall
+  - gem
   layers:
   - Default
   - TransparentFX

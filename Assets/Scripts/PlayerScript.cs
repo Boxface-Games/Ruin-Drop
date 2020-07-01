@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerScrip : MonoBehaviour
+public class PlayerScript : MonoBehaviour
 {
+    public Rigidbody rb;
+
     [Header("Player Swap")]
     public GameObject leftC;
     public GameObject rightC;
@@ -20,39 +22,53 @@ public class PlayerScrip : MonoBehaviour
 
     public void Start()
     {
+        rb = GetComponent<Rigidbody>();
+
+        // Moves the GameObject using it's transform.
+        rb.isKinematic = true;
+
+
         //level text starts at 1
         SetLevelText(1);
     }
 
     // Update is called once per frame
+
+    public void FixedUpdate()
+    {
+        rb.MovePosition(transform.position + -transform.up * camSpeed * Time.fixedDeltaTime);
+
+    }
+
     void Update()
     {
-        jumpTime -= Time.deltaTime;
+        //controller input
+        ControllerInputs();
 
-        //camera transform. constantly moving down with camSpeed to adjust speed per lvl
-        transform.Translate(Vector2.down * camSpeed * Time.deltaTime, Camera.main.transform);
+        //health checker
+        CheckIfAlive();        
 
-        //health stuff
+        //health bar
         HPBar.fillAmount = Health / 100;
-            //NOTES:
-               //if collision.tag "player" collides with collision.tag "enemy"
-              // -25 Health
-             //if Health <= 0
-            //pause, show game over text, save score, go to main menu
 
-        //tap controls
+        //jumpTime -= Time.deltaTime;        
+    }
+
+    //controller
+    public void ControllerInputs ()
+    {
         for (int i = 0; i < Input.touchCount; ++i)
         {
             if (Input.GetTouch(i).phase == TouchPhase.Began)
             {
-            Debug.Log("test");
+                Debug.Log("test");
                 if (leftC.activeInHierarchy == true)
                 {
                     //NOTE:add wait 0.2f and animation
-                    
+
                     rightC.SetActive(true);
                     leftC.SetActive(false);
-            }           
+                }
 
                 else
                 {
@@ -63,9 +79,27 @@ public class PlayerScrip : MonoBehaviour
         }
     }
 
+    public void TakeDamage (int damageToTake)
+    {
+        Health -= damageToTake;
+    }
+
     public void SetLevelText(int levelNum)
     {
         this.levelNum.text = " " + levelNum;
+    }
+
+    public void CheckIfAlive ()
+    {
+        if (Health <= 0)
+        {
+            PlayerHasDied();
+        }
+    }
+
+    public void PlayerHasDied ()
+    {
+        //code here for when player dies
     }
 
 }
