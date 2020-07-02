@@ -16,6 +16,9 @@ public class PlayerCollider : MonoBehaviour
 
         if (other.tag == "gem")
         {
+            //playerScript.scoreAdd(100);
+            Destroy(other.gameObject);
+            Debug.Log("Scoreadded");
 
         }
     }
