@@ -24,7 +24,7 @@ public class PlayerScript : MonoBehaviour
     public float Health;
 
     [Header("Score")]
-    public float scoreFloat;
+    public int score;
     public Text soureNum;
 
     public void Start()
@@ -78,7 +78,7 @@ public class PlayerScript : MonoBehaviour
 
     public void scoreAdd (int scoreToAdd)
     {
-        scoreFloat = +scoreToAdd;
+        score = +scoreToAdd;
     }
 
     public void TakeDamage (int damageToTake)
@@ -101,10 +101,10 @@ public class PlayerScript : MonoBehaviour
 
     public void PlayerHasDied ()
     {
-        if (PlayerPrefs.GetFloat("Highscore") < score)
+        if (PlayerPrefs.GetInt("Highscore") < score)
         PlayerPrefs.SetInt("Highscore", score);
+        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
 
-        
         //code here for when player dies
     }
 
