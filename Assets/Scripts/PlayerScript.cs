@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -90,6 +91,10 @@ public class PlayerScript : MonoBehaviour
 
     public void PlayerHasDied ()
     {
+        if (PlayerPrefs.GetFloat("Highscore") < score)
+        PlayerPrefs.SetInt("Highscore", score);
+
+        
         //code here for when player dies
     }
 
