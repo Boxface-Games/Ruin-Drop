@@ -25,7 +25,8 @@ public class PlayerScript : MonoBehaviour
 
     [Header("Score")]
     public int score;
-    public Text soureNum;
+    public Text ScoreText;
+    public float timer;
 
     public void Start()
     {
@@ -39,6 +40,18 @@ public class PlayerScript : MonoBehaviour
     {
         transform.Translate(Vector2.down * camSpeed * Time.deltaTime, Camera.main.transform);
 
+        timer += Time.deltaTime;
+
+        if(timer > 5f)
+        {
+            score += 5;
+
+            ScoreText.text = score.ToString();
+
+            //Reset the timer to 0.
+            timer = 0;
+        }
+                          
         //controller input
         ControllerInputs();
 
@@ -78,7 +91,7 @@ public class PlayerScript : MonoBehaviour
 
     public void scoreAdd (int scoreToAdd)
     {
-        score = +scoreToAdd;
+        score += scoreToAdd;
     }
 
     public void TakeDamage (int damageToTake)
@@ -102,7 +115,10 @@ public class PlayerScript : MonoBehaviour
     public void PlayerHasDied ()
     {
         if (PlayerPrefs.GetInt("Highscore") < score)
-        PlayerPrefs.SetInt("Highscore", score);
+        {
+            PlayerPrefs.SetInt("Highscore", score);
+        }
+
         SceneManager.LoadScene("Menu", LoadSceneMode.Single);
 
         //code here for when player dies
