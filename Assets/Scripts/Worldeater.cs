@@ -8,17 +8,7 @@ public class Worldeater : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         Destroy(other.gameObject);
-        //Destroy(gameObject);
         Debug.Log("alldelete");
-
-        //  \* if (collision.gameObject.tag == "enemy")
-        //    Destroy (gameObject);
-        //    Debug.Log("spikedead");
-
-        //    if (collision.gameObject.tag == "wall")
-        //    Destroy(gameObject);
-        //    Debug.Log("walldead");
-        //
     }
 
 }

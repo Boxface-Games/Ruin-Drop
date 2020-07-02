@@ -7,6 +7,8 @@ TagManager:
   - enemy
   - wall
   - gem
+  - leveladd
+  - levelup
   layers:
   - Default
   - TransparentFX

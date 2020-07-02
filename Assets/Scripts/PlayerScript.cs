@@ -14,6 +14,7 @@ public class PlayerScript : MonoBehaviour
     [Header("Level")]
     public float camSpeed;
     public Text levelNum;
+    public int levelNumber;
     public float jumpTime;
 
     [Header("Health")]
@@ -26,22 +27,12 @@ public class PlayerScript : MonoBehaviour
 
         // Moves the GameObject using it's transform.
         rb.isKinematic = true;
-
-
-        //level text starts at 1
-        SetLevelText(1);
-    }
-
-    // Update is called once per frame
-
-    public void FixedUpdate()
-    {
-        rb.MovePosition(transform.position + -transform.up * camSpeed * Time.fixedDeltaTime);
-
     }
 
     void Update()
     {
+        transform.Translate(Vector2.down * camSpeed * Time.deltaTime, Camera.main.transform);
+
         //controller input
         ControllerInputs();
 
@@ -84,9 +75,9 @@ public class PlayerScript : MonoBehaviour
         Health -= damageToTake;
     }
 
-    public void SetLevelText(int levelNum)
+    public void SetLevelText()
     {
-        this.levelNum.text = " " + levelNum;
+        this.levelNum.text = " " + levelNumber;
     }
 
     public void CheckIfAlive ()
