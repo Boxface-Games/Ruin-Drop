@@ -15,14 +15,15 @@ public class LevelSpawn : MonoBehaviour
         {
             RandomGenerate();
             Debug.Log("leveladded");
-            //gameLevels[levelRoll]
+            SpawnLevel();
         }
 
     }
 
-    public void SpwanLevel()
+    public void SpawnLevel()
     {
-        //Instantiate(Spawner.position, Spawner.rotation);
+        Instantiate(gameLevels[levelRoll], Spawner.position, Spawner.rotation);
+
     }
 
     public void RandomGenerate()
