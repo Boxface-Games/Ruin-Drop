@@ -15,8 +15,8 @@ public class PlayerScript : MonoBehaviour
 
     [Header("Level")]
     public float camSpeed;
-    public Text levelNum;
-    public int levelNumber;
+    public Text levelText;
+    public int level;
     public float jumpTime;
 
     [Header("Health")]
@@ -34,24 +34,24 @@ public class PlayerScript : MonoBehaviour
 
         // Moves the GameObject using it's transform.
         rb.isKinematic = true;
+
+        level = 1;
     }
 
     void Update()
     {
-        transform.Translate(Vector2.down * camSpeed * Time.deltaTime, Camera.main.transform);
+        //constant level update
+        levelText.text = level.ToString();
 
+        //Constant score update
+        ScoreText.text = score.ToString();
+
+        //timer for scoring
         timer += Time.deltaTime;
 
-        if(timer > 5f)
-        {
-            score += 5;
-
-            ScoreText.text = score.ToString();
-
-            //Reset the timer to 0.
-            timer = 0;
-        }
-                          
+        //scoretimer function
+        ScoreTimer();
+                                 
         //controller input
         ControllerInputs();
 
@@ -61,7 +61,10 @@ public class PlayerScript : MonoBehaviour
         //health bar
         HPBar.fillAmount = Health / 100;
 
-        //jumpTime -= Time.deltaTime;        
+        //jumpTime -= Time.deltaTime;   
+
+        //screen transform
+        transform.Translate(Vector2.down * camSpeed * Time.deltaTime, Camera.main.transform);
     }
 
     //controller
@@ -89,6 +92,24 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    public void ScoreTimer ()
+    {
+        if (timer > 1f)
+        {
+            score += 10;
+
+            ScoreText.text = score.ToString();
+
+            //Reset the timer to 0.
+            timer = 0;
+        }
+    }
+
+    public void levelUP (int levelToAdd)
+    {
+        level += levelToAdd;
+    }
+
     public void scoreAdd (int scoreToAdd)
     {
         score += scoreToAdd;
@@ -97,11 +118,6 @@ public class PlayerScript : MonoBehaviour
     public void TakeDamage (int damageToTake)
     {
         Health -= damageToTake;
-    }
-
-    public void SetLevelText()
-    {
-        this.levelNum.text = " " + levelNumber;
     }
 
     public void CheckIfAlive ()

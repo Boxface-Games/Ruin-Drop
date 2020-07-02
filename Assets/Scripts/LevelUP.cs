@@ -11,8 +11,7 @@ public class LevelUP : MonoBehaviour
         if (other.tag == "levelup")
         {
             playerScript.camSpeed++;
-           // playerScript.SetLevelText(+1);
-           //need to make int for leveltxt
+            playerScript.levelUP(1);
         }
     }
 }
