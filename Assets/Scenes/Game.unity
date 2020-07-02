@@ -8471,8 +8471,6 @@ MonoBehaviour:
   jumpTime: 0
   HPBar: {fileID: 1689812235}
   Health: 100
-  ScoreText: {fileID: 1761449423}
-  score: 0
 --- !u!54 &1116726850
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -21,12 +21,6 @@ public class PlayerScript : MonoBehaviour
     public Image HPBar;
     public float Health;
 
-    //Making Variables for the scoring system
-
-    public Text ScoreText;
-    private float time;
-    public int score;
-
     public void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -49,23 +43,6 @@ public class PlayerScript : MonoBehaviour
         HPBar.fillAmount = Health / 100;
 
         //jumpTime -= Time.deltaTime;        
-
-        //Scoring Set up
-
-        time += Time.deltaTime;
-
-        if (time > 10f)
-        {
-            score += 100;
-
-            //Updating the text if the score changes
-
-            ScoreText.text = score.ToString();
-
-            //Resetting the Time in order to Repeat
-
-            time = 0;
-        }
     }
 
     //controller
