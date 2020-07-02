@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
+    [Header("RigidBody")]
     public Rigidbody rb;
 
     [Header("Player Swap")]
@@ -20,6 +21,10 @@ public class PlayerScript : MonoBehaviour
     [Header("Health")]
     public Image HPBar;
     public float Health;
+
+    [Header("Score")]
+    public float scoreFloat;
+    public Text soureNum;
 
     public void Start()
     {
@@ -68,6 +73,11 @@ public class PlayerScript : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void scoreAdd (int scoreToAdd)
+    {
+        scoreFloat = +scoreToAdd;
     }
 
     public void TakeDamage (int damageToTake)
