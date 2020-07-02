@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
-    [Header("Rigidbody")]
     public Rigidbody rb;
 
     [Header("Player Swap")]
@@ -15,22 +14,18 @@ public class PlayerScript : MonoBehaviour
     [Header("Level")]
     public float camSpeed;
     public Text levelNum;
+    public int levelNumber;
     public float jumpTime;
 
     [Header("Health")]
     public Image HPBar;
     public float Health;
 
-<<<<<<< HEAD
     //Making Variables for the scoring system
 
     public Text ScoreText;
     private float time;
     public int score;
-=======
-    [Header("Score")]
-    public float scoreFloat;
->>>>>>> bef27af2c16ed798593d21d5e0d468ed4ab98629
 
     public void Start()
     {
@@ -38,10 +33,6 @@ public class PlayerScript : MonoBehaviour
 
         // Moves the GameObject using it's transform.
         rb.isKinematic = true;
-
-
-        //level text starts at 1
-        SetLevelText(1);
     }
 
     void Update()
@@ -102,19 +93,14 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    public void scoreAdd (int scoreToAdd)
-    {
-        scoreFloat += scoreToAdd;
-    }
-
     public void TakeDamage (int damageToTake)
     {
         Health -= damageToTake;
     }
 
-    public void SetLevelText(int levelNum)
+    public void SetLevelText()
     {
-        this.levelNum.text = " " + levelNum;
+        this.levelNum.text = " " + levelNumber;
     }
 
     public void CheckIfAlive ()
