@@ -28,6 +28,6 @@ public class LevelSpawn : MonoBehaviour
 
     public void RandomGenerate()
     {
-        levelRoll = Random.Range(1, 6);
+        levelRoll = Random.Range(1, 5);
     }
 }
