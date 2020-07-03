@@ -134,10 +134,11 @@ public class PlayerScript : MonoBehaviour
         {
             PlayerPrefs.SetInt("Highscore", score);
         }
+        //code here for when player dies
 
         SceneManager.LoadScene("Menu", LoadSceneMode.Single);
 
-        //code here for when player dies
+        
     }
 
 }
