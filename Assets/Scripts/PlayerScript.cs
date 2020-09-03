@@ -64,7 +64,7 @@ public class PlayerScript : MonoBehaviour
         //jumpTime -= Time.deltaTime;   
 
         //screen transform
-        transform.Translate(Vector2.down * camSpeed * Time.deltaTime, Camera.main.transform);
+        transform.Translate(Vector2.down * camSpeed * Time.deltaTime /3 , Camera.main.transform);
     }
 
     //controller

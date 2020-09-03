@@ -599,6 +599,11 @@ PrefabInstance:
       propertyPath: ScoreText
       value: 
       objectReference: {fileID: 1761449423}
+    - target: {fileID: 2598534043665314755, guid: 8925d0b550e62564888131c67ec587e9,
+        type: 3}
+      propertyPath: camSpeed
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8925d0b550e62564888131c67ec587e9, type: 3}
 --- !u!1001 &4496376790784987383
